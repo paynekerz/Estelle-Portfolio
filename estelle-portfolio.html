@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estelle Lu — Business & Systems Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --ivory: #F2ECE2;
+    --warm-sand: #E4D4BC;
+    --camel: #C17F4B;
+    --rust: #8B3A1F;
+    --espresso: #3D2A1E;
+    --espresso-deep: #231810;
+    --mid-brown: #6B4E35;
+    --light-text: #9A7B65;
+    --card-bg: #F5EEE3;
+    --border: rgba(139, 90, 50, 0.15);
+    --border-strong: rgba(139, 90, 50, 0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--espresso);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--espresso);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--mid-brown);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3rem 5rem 4rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--camel);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--espresso-deep);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--mid-brown);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-tagline {
+    font-size: 1.0rem;
+    font-weight: 300;
+    color: var(--mid-brown);
+    line-height: 1.75;
+    max-width: 380px;
+    margin-bottom: 3rem;
+    border-left: 2px solid var(--camel);
+    padding-left: 1.25rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--espresso);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--border-strong);
+    color: var(--espresso);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 5rem 4rem;
+    position: relative;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--espresso-deep);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    margin-top: 0.3rem;
+  }
+
+  .hero-decoration {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--warm-sand);
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--camel);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--camel);
+    opacity: 0.5;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--ivory);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--espresso-deep);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .about-headline em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .about-body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--mid-brown);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .tool-tag {
+    font-size: 0.73rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--border-strong);
+    color: var(--mid-brown);
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .tool-tag:hover {
+    background: var(--espresso);
+    color: var(--cream);
+    border-color: var(--espresso);
+  }
+
+  .about-aside {
+    padding-top: 1rem;
+  }
+
+  .pullquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--espresso);
+    border-left: 2px solid var(--rust);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .pullquote-attr {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    padding-left: 1.5rem;
+  }
+
+  /* WORK */
+  .work {
+    background: var(--cream);
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .work-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--espresso-deep);
+    letter-spacing: -0.01em;
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+    transition: background 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .project-card:last-child { border-bottom: 1px solid var(--border); }
+
+  .project-card:hover { background: var(--card-bg); margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem; }
+
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--light-text);
+    letter-spacing: 0.06em;
+  }
+
+  .project-company {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--camel);
+  }
+
+  .project-industry {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--light-text);
+  }
+
+  .project-main {}
+
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 400;
+    color: var(--espresso-deep);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--mid-brown);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    background: var(--warm-sand);
+    color: var(--espresso);
+  }
+
+  .project-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    min-width: 130px;
+  }
+
+  .metric-highlight {
+    text-align: right;
+  }
+
+  .metric-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--rust);
+    line-height: 1;
+  }
+
+  .metric-desc {
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    margin-top: 0.15rem;
+  }
+
+  /* TESTIMONIAL */
+  .testimonial-section {
+    background: var(--espresso);
+    color: var(--cream);
+  }
+
+  .testimonial-section .section-label { color: var(--warm-sand); }
+  .testimonial-section .section-label::after { background: var(--warm-sand); }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .testimonial-card {
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 2.5rem;
+  }
+
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ivory);
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-mark {
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--camel);
+    line-height: 0.5;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .testimonial-attr {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--camel);
+  }
+
+  .testimonial-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  /* PHILOSOPHY */
+  .philosophy {
+    background: var(--ivory);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .philosophy-left {}
+
+  .philosophy-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--espresso-deep);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .philosophy-headline em { color: var(--rust); font-style: italic; }
+
+  .philosophy-body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--mid-brown);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .philosophy-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .pillar {
+    border-left: 2px solid var(--camel);
+    padding-left: 1rem;
+  }
+
+  .pillar-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    margin-bottom: 0.3rem;
+  }
+
+  .pillar-body {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--mid-brown);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--cream);
+    text-align: center;
+    padding: 7rem 4rem;
+  }
+
+  .contact-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--camel);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 300;
+    color: var(--espresso-deep);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-headline em { color: var(--rust); font-style: italic; }
+
+  .contact-subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--mid-brown);
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--espresso-deep);
+    color: var(--light-text);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+
+  footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--warm-sand);
+    letter-spacing: 0.04em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-right { padding: 3rem 1.5rem; }
+    .about-grid, .philosophy-grid, .testimonial-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-metrics { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+    .work-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Estelle Lu</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#philosophy">Approach</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Business &amp; Systems Analyst · MBA · Kansas City</p>
+    <h1 class="hero-name">Estelle<br><em>Lu</em></h1>
+    <p class="hero-title">Analytics · Financial Technology · Healthcare Systems</p>
+    <p class="hero-tagline">
+      I combine psychology and business training to build analytics that work with human behavior — not against it.
+      I think about how people will actually use data, not just what the numbers show.
+    </p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="https://www.linkedin.com/in/estelle-lu/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-decoration"></div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">2,000+</span>
+        <span class="stat-label">Employees trained on Jira &amp; Confluence</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">KPI dashboards delivered</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">80%</span>
+        <span class="stat-label">Reduction in manual reporting effort</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">4 hrs</span>
+        <span class="stat-label">Daily time saved via SQL automation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p class="section-label">About</p>
+  <div class="about-grid">
+    <div>
+      <h2 class="about-headline">Where business needs,<br>technology, data, and<br><em>people</em> meet.</h2>
+      <p class="about-body">
+        I'm a business systems and analytics professional with an MBA and a background spanning financial systems, healthcare technology, product analytics, workflow automation, and enterprise reporting.
+      </p>
+      <p class="about-body">
+        Most recently, I led a department-wide Jira and Confluence transition at Burns &amp; McDonnell — standardizing workflows, building documentation architecture, and training 2,000+ employees across four cross-functional finance and IT teams.
+      </p>
+      <p class="about-body">
+        I'm most effective in roles that blend analytical thinking with strong communication — where I can clarify problems, improve processes, and help teams make better decisions through data and technology.
+      </p>
+      <div class="tools-grid">
+        <span class="tool-tag">SQL</span>
+        <span class="tool-tag">Power BI</span>
+        <span class="tool-tag">Tableau</span>
+        <span class="tool-tag">Jira</span>
+        <span class="tool-tag">Confluence</span>
+        <span class="tool-tag">Azure DevOps</span>
+        <span class="tool-tag">Dynamics 365</span>
+        <span class="tool-tag">Incorta</span>
+        <span class="tool-tag">Orbit Analytics</span>
+        <span class="tool-tag">REST APIs</span>
+        <span class="tool-tag">Excel</span>
+        <span class="tool-tag">Miro · Visio</span>
+      </div>
+    </div>
+    <div class="about-aside">
+      <blockquote class="pullquote">
+        "It was wonderful working with Estelle throughout the Jira migration project. Her contributions made a real difference."
+      </blockquote>
+      <p class="pullquote-attr">Mentor Bytyqi · Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-header">
+    <div>
+      <p class="section-label">Selected Work</p>
+      <h2 class="work-title">Projects &amp; Impact</h2>
+    </div>
+  </div>
+
+  <div class="projects-list">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="project-meta">
+        <span class="project-number">01</span>
+        <span class="project-company">Burns &amp; McDonnell</span>
+        <span class="project-industry">Financial Technology · Enterprise IT</span>
+      </div>
+      <div class="project-main">
+        <h3 class="project-title">Jira &amp; Confluence Department Transformation</h3>
+        <p class="project-desc">
+          Led a department-wide migration from Azure DevOps and OneNote into Jira and Confluence for four cross-functional teams. Owned Jira setup, board creation, automation configuration, Confluence migration, and large-scale training that supported go-live readiness across the organization.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Jira Admin</span>
+          <span class="project-tag">Confluence</span>
+          <span class="project-tag">Azure DevOps</span>
+          <span class="project-tag">Change Management</span>
+          <span class="project-tag">Power Apps</span>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-highlight">
+          <div class="metric-big">2,000+</div>
+          <div class="metric-desc">Employees trained</div>
+        </div>
+        <div class="metric-highlight">
+          <div class="metric-big">2 wks</div>
+          <div class="metric-desc">To production-ready boards</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="project-meta">
+        <span class="project-number">02</span>
+        <span class="project-company">WellSky</span>
+        <span class="project-industry">Post-Acute Healthcare</span>
+      </div>
+      <div class="project-main">
+        <h3 class="project-title">Product Analytics for a Healthcare Reporting Platform</h3>
+        <p class="project-desc">
+          Owned end-to-end product analytics for a customer-facing reporting platform serving 200+ healthcare clients. Delivered KPI dashboards, reusable SQL frameworks, user guides, and training sessions that improved reporting adoption and reduced analyst dependency.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Dashboarding</span>
+          <span class="project-tag">User Guides</span>
+          <span class="project-tag">Healthcare</span>
+          <span class="project-tag">Jira</span>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-highlight">
+          <div class="metric-big">50+</div>
+          <div class="metric-desc">KPI dashboards delivered</div>
+        </div>
+        <div class="metric-highlight">
+          <div class="metric-big">200+</div>
+          <div class="metric-desc">Healthcare clients served</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <div class="project-meta">
+        <span class="project-number">03</span>
+        <span class="project-company">Supply Chain Client</span>
+        <span class="project-industry">Supply Chain · ERP</span>
+      </div>
+      <div class="project-main">
+        <h3 class="project-title">Sales Open Orders Dashboard &amp; SQL Reporting Automation</h3>
+        <p class="project-desc">
+          Built real-time Sales Open Orders dashboards that consolidated ERP and CRM data — giving supply chain and sales leadership instant visibility into order status, aging, and revenue forecasting, and eliminating a long-standing manual daily reporting workflow.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Incorta</span>
+          <span class="project-tag">Oracle ERP</span>
+          <span class="project-tag">NetSuite</span>
+          <span class="project-tag">Automation</span>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-highlight">
+          <div class="metric-big">80%</div>
+          <div class="metric-desc">Reduction in manual labor</div>
+        </div>
+        <div class="metric-highlight">
+          <div class="metric-big">4 hrs</div>
+          <div class="metric-desc">Daily time saved</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card">
+      <div class="project-meta">
+        <span class="project-number">04</span>
+        <span class="project-company">Local Bookstore</span>
+        <span class="project-industry">Retail Strategy · KC Area</span>
+      </div>
+      <div class="project-main">
+        <h3 class="project-title">Data-Driven Operations Consulting</h3>
+        <p class="project-desc">
+          Improved operations for a local book, plant, and coffee shop through inventory tracking, customer segmentation, and store-hour optimization. Applied behavioral segmentation beyond basic demographics to identify high-value customer mindsets and inform merchandising decisions.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Excel</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Customer Segmentation</span>
+          <span class="project-tag">Retail Strategy</span>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric-highlight">
+          <div class="metric-big">20%</div>
+          <div class="metric-desc">Increase in foot traffic</div>
+        </div>
+        <div class="metric-highlight">
+          <div class="metric-big">3</div>
+          <div class="metric-desc">Revenue streams optimized</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial-section">
+  <p class="section-label">Recognition</p>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <span class="testimonial-mark">"</span>
+      <p class="testimonial-quote">
+        It was wonderful working with Estelle throughout the Jira migration project. Her contributions made a real difference, and I appreciate all of her hard work and positivity.
+      </p>
+      <p class="testimonial-name">Mentor Bytyqi</p>
+      <p class="testimonial-attr">Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+    </div>
+    <div class="testimonial-card">
+      <span class="testimonial-mark">"</span>
+      <p class="testimonial-quote">
+        Special thanks to Estelle for keeping communication flowing across departments such as HR, Finance, and Procurement, ensuring alignment across the organization.
+      </p>
+      <p class="testimonial-name">Mentor Bytyqi</p>
+      <p class="testimonial-attr">Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <p class="section-label">Approach</p>
+  <div class="philosophy-grid">
+    <div class="philosophy-left">
+      <h2 class="philosophy-headline">Dashboards that help people <em>decide</em>, not just inform.</h2>
+      <p class="philosophy-body">
+        I design for the people who will actually use the data — busy professionals juggling competing priorities, often making important decisions under pressure. Good analytics begins not with the data, but with understanding the audience.
+      </p>
+      <p class="philosophy-body">
+        The best dashboards don't give you more information. They give you the right information, at the right time, shaped into a story that's useful in the moment it's needed.
+      </p>
+    </div>
+    <div class="philosophy-pillars">
+      <div class="pillar">
+        <p class="pillar-title">Outcome-first metrics</p>
+        <p class="pillar-body">Surface what matters most, not what's easiest to measure.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-title">Clear visual hierarchy</p>
+        <p class="pillar-body">Information that's easier to take in reduces cognitive load at decision time.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-title">Signal over noise</p>
+        <p class="pillar-body">Clean, focused design that earns attention rather than demanding it.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-title">Audience-specific views</p>
+        <p class="pillar-body">Executive, operational, and user-level needs are genuinely different.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="contact-eyebrow">Get in touch</p>
+  <h2 class="contact-headline">Let's build something<br><em>worth seeing.</em></h2>
+  <p class="contact-subtitle">
+    Open to contract, full-time, and consulting opportunities in analytics, business systems, and data-driven strategy.
+  </p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/estelle-lu/" target="_blank" class="btn-primary">Connect on LinkedIn ↗</a>
+    <a href="mailto:hello@estellelu.com" class="btn-ghost">Send an Email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Estelle Lu</span>
+  <span>Business &amp; Systems Analyst · Kansas City, MO</span>
+  <span>© 2025</span>
+</footer>
+
+</body>
+</html>
