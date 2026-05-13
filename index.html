@@ -6,757 +6,789 @@
 <title>Estelle Lu — Business & Systems Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --cream: #FAF7F2;
-    --ivory: #F2ECE2;
-    --warm-sand: #E4D4BC;
-    --camel: #C17F4B;
-    --rust: #8B3A1F;
-    --espresso: #3D2A1E;
-    --espresso-deep: #231810;
-    --mid-brown: #6B4E35;
-    --light-text: #9A7B65;
-    --card-bg: #F5EEE3;
-    --border: rgba(139, 90, 50, 0.15);
-    --border-strong: rgba(139, 90, 50, 0.3);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--espresso);
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 4rem;
-    background: rgba(250, 247, 242, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--espresso);
-    letter-spacing: 0.02em;
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 400;
-    color: var(--mid-brown);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--rust); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 5rem;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem 3rem 5rem 4rem;
-    border-right: 1px solid var(--border);
-  }
-
-  .hero-eyebrow {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--camel);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 7vw, 6.5rem);
-    font-weight: 300;
-    line-height: 1.0;
-    color: var(--espresso-deep);
-    letter-spacing: -0.01em;
-    margin-bottom: 0.4rem;
-  }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--rust);
-  }
-
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--mid-brown);
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.01em;
-  }
-
-  .hero-tagline {
-    font-size: 1.0rem;
-    font-weight: 300;
-    color: var(--mid-brown);
-    line-height: 1.75;
-    max-width: 380px;
-    margin-bottom: 3rem;
-    border-left: 2px solid var(--camel);
-    padding-left: 1.25rem;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background: var(--espresso);
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
-
-  .btn-ghost {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    border: 1px solid var(--border-strong);
-    color: var(--espresso);
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
-
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 5rem 4rem;
-    position: relative;
-  }
-
-  .hero-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1.5rem;
-  }
-
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--espresso-deep);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.78rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--light-text);
-    margin-top: 0.3rem;
-  }
-
-  .hero-decoration {
-    position: absolute;
-    top: 30%;
-    left: 10%;
-    width: 180px;
-    height: 180px;
-    border: 1px solid var(--warm-sand);
-    border-radius: 50%;
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  /* SECTION BASE */
-  section {
-    padding: 6rem 4rem;
-  }
-
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--camel);
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .section-label::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--camel);
-    opacity: 0.5;
-  }
-
-  /* ABOUT */
-  .about {
-    background: var(--ivory);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 6rem;
-    align-items: start;
-  }
-
-  .about-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 400;
-    line-height: 1.25;
-    color: var(--espresso-deep);
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .about-headline em {
-    font-style: italic;
-    color: var(--rust);
-  }
-
-  .about-body {
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--mid-brown);
-    line-height: 1.85;
-    margin-bottom: 1.5rem;
-  }
-
-  .tools-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 2rem;
-  }
-
-  .tool-tag {
-    font-size: 0.73rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.85rem;
-    border: 1px solid var(--border-strong);
-    color: var(--mid-brown);
-    background: transparent;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .tool-tag:hover {
-    background: var(--espresso);
-    color: var(--cream);
-    border-color: var(--espresso);
-  }
-
-  .about-aside {
-    padding-top: 1rem;
-  }
-
-  .pullquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.55rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.55;
-    color: var(--espresso);
-    border-left: 2px solid var(--rust);
-    padding-left: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .pullquote-attr {
-    font-size: 0.78rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--light-text);
-    padding-left: 1.5rem;
-  }
-
-  /* WORK */
-  .work {
-    background: var(--cream);
-  }
-
-  .work-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 4rem;
-  }
-
-  .work-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 400;
-    color: var(--espresso-deep);
-    letter-spacing: -0.01em;
-  }
-
-  .projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .project-card {
-    display: grid;
-    grid-template-columns: 220px 1fr auto;
-    gap: 2rem;
-    align-items: start;
-    padding: 2.5rem 0;
-    border-top: 1px solid var(--border);
-    transition: background 0.2s;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .project-card:last-child { border-bottom: 1px solid var(--border); }
-
-  .project-card:hover { background: var(--card-bg); margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem; }
-
-  .project-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .project-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--light-text);
-    letter-spacing: 0.06em;
-  }
-
-  .project-company {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--camel);
-  }
-
-  .project-industry {
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: var(--light-text);
-  }
-
-  .project-main {}
-
-  .project-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.65rem;
-    font-weight: 400;
-    color: var(--espresso-deep);
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
-  }
-
-  .project-desc {
-    font-size: 0.88rem;
-    font-weight: 300;
-    color: var(--mid-brown);
-    line-height: 1.75;
-    max-width: 520px;
-    margin-bottom: 1rem;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .project-tag {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.65rem;
-    background: var(--warm-sand);
-    color: var(--espresso);
-  }
-
-  .project-metrics {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-end;
-    min-width: 130px;
-  }
-
-  .metric-highlight {
-    text-align: right;
-  }
-
-  .metric-big {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--rust);
-    line-height: 1;
-  }
-
-  .metric-desc {
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--light-text);
-    margin-top: 0.15rem;
-  }
-
-  /* TESTIMONIAL */
-  .testimonial-section {
-    background: var(--espresso);
-    color: var(--cream);
-  }
-
-  .testimonial-section .section-label { color: var(--warm-sand); }
-  .testimonial-section .section-label::after { background: var(--warm-sand); }
-
-  .testimonial-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .testimonial-card {
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 2.5rem;
-  }
-
-  .testimonial-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--ivory);
-    margin-bottom: 1.5rem;
-  }
-
-  .testimonial-mark {
-    font-size: 3rem;
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--camel);
-    line-height: 0.5;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .testimonial-attr {
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--camel);
-  }
-
-  .testimonial-name {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--cream);
-    margin-bottom: 0.2rem;
-  }
-
-  /* PHILOSOPHY */
-  .philosophy {
-    background: var(--ivory);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .philosophy-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .philosophy-left {}
-
-  .philosophy-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-    font-weight: 300;
-    line-height: 1.2;
-    color: var(--espresso-deep);
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .philosophy-headline em { color: var(--rust); font-style: italic; }
-
-  .philosophy-body {
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--mid-brown);
-    line-height: 1.85;
-    margin-bottom: 1.5rem;
-  }
-
-  .philosophy-pillars {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .pillar {
-    border-left: 2px solid var(--camel);
-    padding-left: 1rem;
-  }
-
-  .pillar-title {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--espresso);
-    margin-bottom: 0.3rem;
-  }
-
-  .pillar-body {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--mid-brown);
-    line-height: 1.6;
-  }
-
-  /* CONTACT */
-  .contact {
-    background: var(--cream);
-    text-align: center;
-    padding: 7rem 4rem;
-  }
-
-  .contact-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--camel);
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 300;
-    color: var(--espresso-deep);
-    line-height: 1.05;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .contact-headline em { color: var(--rust); font-style: italic; }
-
-  .contact-subtitle {
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--mid-brown);
-    max-width: 480px;
-    margin: 0 auto 3rem;
-    line-height: 1.8;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--espresso-deep);
-    color: var(--light-text);
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.78rem;
-    font-weight: 300;
-    letter-spacing: 0.06em;
-  }
-
-  footer .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--warm-sand);
-    letter-spacing: 0.04em;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
-    section { padding: 4rem 1.5rem; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 7rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--border); }
-    .hero-right { padding: 3rem 1.5rem; }
-    .about-grid, .philosophy-grid, .testimonial-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .project-card { grid-template-columns: 1fr; }
-    .project-metrics { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-    footer { flex-direction: column; gap: 0.75rem; text-align: center; }
-    .work-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  }
+:root {
+  --bg: #F8F4EE;
+  --ink: #1C120A;
+  --ink-2: #4A3828;
+  --ink-3: #8C7060;
+  --amber: #B87333;
+  --amber-light: #D4955A;
+  --amber-pale: #EDD9BC;
+  --sand: #EDE4D6;
+  --white: #FDFAF6;
+  --border: rgba(28,18,10,0.1);
+  --border-2: rgba(28,18,10,0.06);
+  --ff-display: 'Playfair Display', Georgia, serif;
+  --ff-body: 'DM Sans', sans-serif;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--amber-pale); border-radius: 2px; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 1.5rem 3.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.4s var(--ease), border-color 0.4s, padding 0.3s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(248,244,238,0.97);
+  border-color: var(--border);
+  padding-top: 1rem; padding-bottom: 1rem;
+  backdrop-filter: blur(16px);
+}
+.nav-logo {
+  font-family: var(--ff-display);
+  font-size: 1.15rem; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-links { display:flex; align-items:center; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-2);
+  text-decoration: none; position: relative; padding-bottom: 2px;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:0; left:0; width:0; height:1px;
+  background: var(--amber); transition: width 0.3s var(--ease-out);
+}
+.nav-links a:hover::after { width:100%; }
+.nav-cta {
+  font-size: 0.75rem !important; font-weight: 500 !important;
+  padding: 0.5rem 1.25rem !important;
+  border: 1px solid var(--ink) !important;
+  transition: background 0.25s, color 0.25s !important; border-radius:0 !important;
+  letter-spacing: 0.1em !important;
+}
+.nav-cta::after { display:none !important; }
+.nav-cta:hover { background: var(--ink); color: var(--bg) !important; }
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.45s; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3.5rem 5rem;
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+
+.hero-bg-text {
+  position: absolute; top: 8%; right: -2%;
+  font-family: var(--ff-display); font-size: clamp(10rem, 20vw, 18rem);
+  font-weight: 700; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(28,18,10,0.055);
+  user-select: none; pointer-events: none; letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.hero-tag {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-tag::before {
+  content: ''; width: 32px; height: 1px; background: var(--amber);
+}
+
+.hero-name {
+  font-family: var(--ff-display);
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  font-weight: 400; line-height: 0.95;
+  letter-spacing: -0.025em; color: var(--ink);
+  margin-bottom: 2rem;
+}
+.hero-name em { font-style: italic; color: var(--amber); }
+
+.hero-bottom {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-top: 3rem;
+}
+
+.hero-desc {
+  max-width: 400px;
+  font-size: 1rem; font-weight: 300;
+  color: var(--ink-2); line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end;
+}
+.hero-status {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.78rem; color: var(--ink-3);
+}
+.status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #6aaa64; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:0.6; transform:scale(1.3); }
+}
+
+.btn {
+  display: inline-block; padding: 0.85rem 2.25rem;
+  font-family: var(--ff-body); font-size: 0.78rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.25s var(--ease);
+}
+.btn-dark {
+  background: var(--ink); color: var(--white);
+}
+.btn-dark:hover { background: var(--amber); }
+.btn-outline {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--ink); background: var(--sand); }
+
+.hero-scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3); animation: bounce 2s ease-in-out infinite;
+}
+.hero-scroll-hint svg { width: 14px; }
+@keyframes bounce { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(5px); } }
+
+/* ─── STATS STRIP ─── */
+.stats-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+.stat-block {
+  padding: 3rem 3.5rem;
+  border-right: 1px solid var(--border);
+}
+.stat-block:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 400; color: var(--ink);
+  line-height: 1; margin-bottom: 0.5rem;
+}
+.stat-label {
+  font-size: 0.75rem; font-weight: 400;
+  letter-spacing: 0.06em; color: var(--ink-3);
+  line-height: 1.5;
+}
+
+/* ─── MARQUEE ─── */
+.marquee-wrap {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden; padding: 1.1rem 0;
+  background: var(--sand);
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0 2rem;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-2); white-space: nowrap;
+}
+.marquee-item::after {
+  content: '◆'; color: var(--amber); font-size: 0.4rem;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ─── SECTION BASE ─── */
+section { padding: 7rem 3.5rem; }
+
+.section-eyebrow {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 3.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--amber);
+}
+
+/* ─── ABOUT ─── */
+.about {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8rem; align-items: start;
+  border-bottom: 1px solid var(--border);
+}
+.about-left {}
+.about-headline {
+  font-family: var(--ff-display);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 400; line-height: 1.2;
+  color: var(--ink); margin-bottom: 2.5rem;
+  letter-spacing: -0.015em;
+}
+.about-headline em { font-style: italic; color: var(--amber); }
+.about-body {
+  font-size: 0.97rem; font-weight: 300; color: var(--ink-2);
+  line-height: 1.9; margin-bottom: 1.25rem;
+}
+.about-right { padding-top: 0.5rem; }
+
+.how-i-work { margin-bottom: 3rem; }
+.how-i-work-title {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 2rem;
+}
+.work-pillars { display: flex; flex-direction: column; gap: 0; }
+.work-pillar {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;
+  cursor: default;
+  transition: background 0.2s;
+}
+.work-pillar:last-child { border-bottom: 1px solid var(--border); }
+.work-pillar:hover { background: var(--sand); padding-left: 0.75rem; padding-right: 0.75rem; margin: 0 -0.75rem; }
+.pillar-title {
+  font-family: var(--ff-display); font-size: 0.95rem;
+  font-weight: 500; color: var(--ink); line-height: 1.3;
+}
+.pillar-body { font-size: 0.85rem; font-weight: 300; color: var(--ink-2); line-height: 1.7; }
+
+.best-skills { }
+.best-skills-title {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 2rem;
+}
+.skill-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.skill-chip {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  font-size: 0.75rem; font-weight: 400;
+  letter-spacing: 0.04em; color: var(--ink-2);
+  background: transparent;
+  transition: all 0.2s;
+  cursor: default;
+}
+.skill-chip:hover {
+  border-color: var(--amber); color: var(--amber);
+  background: rgba(184,115,51,0.06);
+}
+
+/* ─── WORK ─── */
+.work { border-bottom: 1px solid var(--border); }
+
+.work-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 5rem;
+}
+.work-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400; color: var(--ink);
+  letter-spacing: -0.015em; max-width: 420px; line-height: 1.2;
+}
+.work-title em { font-style: italic; color: var(--amber); }
+.work-desc {
+  font-size: 0.88rem; font-weight: 300; color: var(--ink-3);
+  max-width: 340px; line-height: 1.8;
+}
+
+/* Project row */
+.project-row {
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+.project-row:last-of-type { border-bottom: 1px solid var(--border); }
+
+.project-summary {
+  display: grid;
+  grid-template-columns: 280px 1fr auto;
+  gap: 3rem; align-items: center;
+  padding: 2.25rem 0;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
+  user-select: none;
+}
+.project-summary:hover { background: var(--sand); padding-left: 1rem; padding-right: 1rem; margin: 0 -1rem; }
+
+.project-co {
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.project-logo {
+  height: 28px; width: auto; max-width: 140px;
+  object-fit: contain; object-position: left;
+  filter: grayscale(30%) opacity(0.85);
+  transition: filter 0.2s;
+}
+.project-summary:hover .project-logo { filter: grayscale(0%) opacity(1); }
+.project-logo-fallback {
+  font-family: var(--ff-display); font-size: 1rem;
+  font-weight: 500; color: var(--ink);
+}
+.project-industry {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.07em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+
+.project-info {}
+.project-title {
+  font-family: var(--ff-display);
+  font-size: 1.4rem; font-weight: 400;
+  color: var(--ink); line-height: 1.25;
+  letter-spacing: -0.01em; margin-bottom: 0.5rem;
+}
+.project-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+.project-tag {
+  font-size: 0.66rem; font-weight: 500; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 0.18rem 0.6rem;
+  background: var(--amber-pale); color: var(--amber);
+}
+
+.project-metrics {
+  display: flex; flex-direction: column;
+  align-items: flex-end; gap: 0.3rem;
+}
+.metric-big {
+  font-family: var(--ff-display);
+  font-size: 2rem; font-weight: 400;
+  color: var(--ink); line-height: 1;
+}
+.metric-sm {
+  font-size: 0.68rem; font-weight: 400; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+
+.project-expand-icon {
+  grid-column: 3;
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: var(--ink-2);
+  transition: all 0.3s var(--ease);
+  flex-shrink: 0;
+}
+.project-row.open .project-expand-icon {
+  background: var(--ink); color: var(--white); transform: rotate(45deg);
+  border-color: var(--ink);
+}
+
+/* Expand grid layout fix */
+.project-summary {
+  grid-template-columns: 280px 1fr 36px;
+}
+
+/* Project detail panel */
+.project-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+  opacity: 0;
+}
+.project-row.open .project-detail {
+  max-height: 1200px; opacity: 1;
+}
+.project-detail-inner {
+  border-top: 1px solid var(--border);
+  padding: 3.5rem 0;
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 5rem;
+}
+
+.detail-overview h4, .detail-impact h4 {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 1.5rem;
+}
+.detail-overview p {
+  font-size: 0.9rem; font-weight: 300; color: var(--ink-2);
+  line-height: 1.85; margin-bottom: 1rem;
+}
+.contributions-list { list-style: none; margin-bottom: 2rem; }
+.contributions-list li {
+  font-size: 0.87rem; font-weight: 300; color: var(--ink-2);
+  line-height: 1.7; padding: 0.6rem 0 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--border-2);
+  position: relative;
+}
+.contributions-list li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--amber); font-size: 0.75rem; top: 0.75rem;
+}
+.constraints-row {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+}
+.constraint-badge {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  font-size: 0.7rem; color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+
+.impact-metrics {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border); margin-bottom: 2.5rem;
+}
+.impact-metric {
+  padding: 1.5rem; background: var(--bg);
+}
+.impact-metric-num {
+  font-family: var(--ff-display); font-size: 2.2rem;
+  font-weight: 400; color: var(--ink); line-height: 1;
+}
+.impact-metric-label {
+  font-size: 0.68rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--amber); margin-top: 0.4rem;
+}
+
+/* Testimonial inside project */
+.project-testimonial {
+  margin-top: 2rem;
+}
+.project-testimonial blockquote {
+  font-family: var(--ff-display); font-size: 1.05rem;
+  font-style: italic; font-weight: 400;
+  color: var(--ink); line-height: 1.7;
+  border-left: 2px solid var(--amber); padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.testimonial-attr {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.07em;
+  color: var(--ink-3); padding-left: 1.25rem;
+}
+.testimonial-name {
+  font-weight: 500; color: var(--ink-2);
+  display: block; margin-bottom: 0.15rem; font-size: 0.82rem;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials {
+  background: var(--ink);
+  padding: 7rem 3.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.testimonials .section-eyebrow { color: var(--amber-light); }
+.testimonials .section-eyebrow::before { background: var(--amber-light); }
+
+.testimonial-carousel { position: relative; overflow: hidden; }
+.testimonial-slides { display: flex; transition: transform 0.6s var(--ease-out); }
+.testimonial-slide {
+  min-width: 100%; padding: 0 0 4rem;
+}
+.t-quote {
+  font-family: var(--ff-display);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-style: italic; font-weight: 400;
+  color: var(--white); line-height: 1.55;
+  margin-bottom: 2.5rem; max-width: 900px;
+}
+.t-quote::before { content: '"'; color: var(--amber); }
+.t-quote::after { content: '"'; color: var(--amber); }
+.t-attr {
+  font-size: 0.8rem; font-weight: 400; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.45); text-transform: uppercase;
+}
+.t-name { color: var(--amber-light); font-weight: 500; margin-bottom: 0.2rem; }
+
+.testimonial-nav {
+  display: flex; gap: 0.5rem; align-items: center;
+}
+.t-dot {
+  width: 28px; height: 2px; background: rgba(255,255,255,0.2);
+  border: none; cursor: pointer; transition: background 0.2s;
+  padding: 0;
+}
+.t-dot.active, .t-dot:hover { background: var(--amber); }
+
+/* ─── PHILOSOPHY ─── */
+.philosophy {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
+  border-bottom: 1px solid var(--border);
+}
+.philosophy-statement {
+  font-family: var(--ff-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 400; line-height: 1.25;
+  color: var(--ink); letter-spacing: -0.015em;
+}
+.philosophy-statement em { font-style: italic; color: var(--amber); }
+.philosophy-body {
+  font-size: 0.95rem; font-weight: 300; color: var(--ink-2);
+  line-height: 1.9; margin-top: 2rem;
+}
+
+.philosophy-pillars { display: flex; flex-direction: column; gap: 0; padding-top: 0.5rem; }
+.philo-pill {
+  border-top: 1px solid var(--border); padding: 1.75rem 0;
+  display: flex; gap: 2rem; align-items: flex-start;
+  transition: padding-left 0.2s; cursor: default;
+}
+.philo-pill:last-child { border-bottom: 1px solid var(--border); }
+.philo-pill:hover { padding-left: 0.5rem; }
+.philo-num {
+  font-family: var(--ff-display); font-size: 0.85rem;
+  color: var(--amber); font-weight: 400; flex-shrink: 0; margin-top: 0.1rem;
+  min-width: 20px;
+}
+.philo-content {}
+.philo-title {
+  font-size: 0.85rem; font-weight: 500; color: var(--ink);
+  margin-bottom: 0.3rem; letter-spacing: 0.01em;
+}
+.philo-body { font-size: 0.83rem; font-weight: 300; color: var(--ink-3); line-height: 1.7; }
+
+/* ─── CONTACT ─── */
+.contact {
+  text-align: center;
+  padding: 9rem 3.5rem;
+}
+.contact-big {
+  font-family: var(--ff-display);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 400; line-height: 0.95;
+  color: var(--ink); letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+}
+.contact-big em { font-style: italic; color: var(--amber); }
+.contact-sub {
+  font-size: 0.95rem; font-weight: 300; color: var(--ink-3);
+  max-width: 460px; margin: 0 auto 3.5rem; line-height: 1.8;
+}
+.contact-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.35);
+  padding: 2rem 3.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.72rem; letter-spacing: 0.06em; font-weight: 300;
+}
+.footer-logo {
+  font-family: var(--ff-display); font-size: 0.95rem;
+  font-weight: 400; color: rgba(255,255,255,0.6); letter-spacing: 0.01em;
+}
+footer a { color: var(--amber-light); text-decoration: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .hero { padding: 0 1.5rem 4rem; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 2rem; }
+  .hero-actions { align-items: flex-start; }
+  section { padding: 5rem 1.5rem; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+  .stat-block { border-bottom: 1px solid var(--border); }
+  .about { grid-template-columns: 1fr; gap: 4rem; }
+  .philosophy { grid-template-columns: 1fr; gap: 3rem; }
+  .work-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .project-summary { grid-template-columns: 1fr 36px; }
+  .project-co { display: none; }
+  .project-detail-inner { grid-template-columns: 1fr; gap: 3rem; }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .nav-links { gap: 1.25rem; }
+  .nav-cta { display: none !important; }
+  .testimonials { padding: 5rem 1.5rem; }
+}
 </style>
 </head>
 <body>
 
-<nav>
+<!-- NAV -->
+<nav id="nav">
   <a href="#" class="nav-logo">Estelle Lu</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#philosophy">Approach</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Business &amp; Systems Analyst · MBA · Kansas City</p>
-    <h1 class="hero-name">Estelle<br><em>Lu</em></h1>
-    <p class="hero-title">Analytics · Financial Technology · Healthcare Systems</p>
-    <p class="hero-tagline">
-      I combine psychology and business training to build analytics that work with human behavior — not against it.
-      I think about how people will actually use data, not just what the numbers show.
+<header class="hero">
+  <div class="hero-bg-text" aria-hidden="true">Estelle</div>
+
+  <div class="hero-tag reveal">Business &amp; Systems Analyst · MBA · Kansas City</div>
+
+  <h1 class="hero-name reveal reveal-delay-1">
+    Estelle<br><em>Lu.</em>
+  </h1>
+
+  <div class="hero-bottom">
+    <p class="hero-desc reveal reveal-delay-2">
+      I combine psychology and business training to build analytics that work with human behavior — not against it. I enjoy working where business needs, data, technology, and people come together.
     </p>
-    <div class="hero-ctas">
-      <a href="#work" class="btn-primary">View My Work</a>
-      <a href="https://www.linkedin.com/in/estelle-lu/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-decoration"></div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-number">2,000+</span>
-        <span class="stat-label">Employees trained on Jira &amp; Confluence</span>
+    <div class="hero-actions reveal reveal-delay-3">
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        Currently contracting at Burns &amp; McDonnell
       </div>
-      <div class="stat-item">
-        <span class="stat-number">50+</span>
-        <span class="stat-label">KPI dashboards delivered</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">80%</span>
-        <span class="stat-label">Reduction in manual reporting effort</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">4 hrs</span>
-        <span class="stat-label">Daily time saved via SQL automation</span>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <a href="#work" class="btn btn-dark">View My Work</a>
+        <a href="https://www.linkedin.com/in/estelle-lu/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
       </div>
     </div>
   </div>
-</section>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <svg viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="12" height="20" rx="6" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="7" cy="6" r="2" fill="currentColor"/>
+    </svg>
+    Scroll
+  </div>
+</header>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-block reveal">
+    <div class="stat-num">2,000+</div>
+    <div class="stat-label">Employees trained on new tools and processes</div>
+  </div>
+  <div class="stat-block reveal reveal-delay-1">
+    <div class="stat-num">50+</div>
+    <div class="stat-label">KPI dashboards delivered across industries</div>
+  </div>
+  <div class="stat-block reveal reveal-delay-2">
+    <div class="stat-num">80%</div>
+    <div class="stat-label">Reduction in manual reporting labor</div>
+  </div>
+  <div class="stat-block reveal reveal-delay-3">
+    <div class="stat-num">4 hrs</div>
+    <div class="stat-label">Saved daily through SQL automation</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">SQL</span>
+    <span class="marquee-item">Power BI</span>
+    <span class="marquee-item">Tableau</span>
+    <span class="marquee-item">Jira</span>
+    <span class="marquee-item">Confluence</span>
+    <span class="marquee-item">Azure DevOps</span>
+    <span class="marquee-item">Dynamics 365</span>
+    <span class="marquee-item">Incorta</span>
+    <span class="marquee-item">Oracle ERP</span>
+    <span class="marquee-item">NetSuite</span>
+    <span class="marquee-item">REST APIs</span>
+    <span class="marquee-item">Power Apps</span>
+    <span class="marquee-item">Orbit Analytics</span>
+    <span class="marquee-item">Miro</span>
+    <span class="marquee-item">Visio</span>
+    <span class="marquee-item">Excel</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">SQL</span>
+    <span class="marquee-item">Power BI</span>
+    <span class="marquee-item">Tableau</span>
+    <span class="marquee-item">Jira</span>
+    <span class="marquee-item">Confluence</span>
+    <span class="marquee-item">Azure DevOps</span>
+    <span class="marquee-item">Dynamics 365</span>
+    <span class="marquee-item">Incorta</span>
+    <span class="marquee-item">Oracle ERP</span>
+    <span class="marquee-item">NetSuite</span>
+    <span class="marquee-item">REST APIs</span>
+    <span class="marquee-item">Power Apps</span>
+    <span class="marquee-item">Orbit Analytics</span>
+    <span class="marquee-item">Miro</span>
+    <span class="marquee-item">Visio</span>
+    <span class="marquee-item">Excel</span>
+  </div>
+</div>
 
 <!-- ABOUT -->
-<section class="about" id="about">
-  <p class="section-label">About</p>
-  <div class="about-grid">
-    <div>
-      <h2 class="about-headline">Where business needs,<br>technology, data, and<br><em>people</em> meet.</h2>
-      <p class="about-body">
-        I'm a business systems and analytics professional with an MBA and a background spanning financial systems, healthcare technology, product analytics, workflow automation, and enterprise reporting.
+<section id="about">
+  <div class="about">
+    <div class="about-left">
+      <p class="section-eyebrow">About</p>
+      <h2 class="about-headline reveal">Nice to<br><em>meet you!</em></h2>
+      <p class="about-body reveal reveal-delay-1">
+        I'm an MBA-trained business systems and analytics professional based in Kansas City. I combine psychology and business training to build analytics that work with human behavior — not against it.
       </p>
-      <p class="about-body">
-        Most recently, I led a department-wide Jira and Confluence transition at Burns &amp; McDonnell — standardizing workflows, building documentation architecture, and training 2,000+ employees across four cross-functional finance and IT teams.
+      <p class="about-body reveal reveal-delay-2">
+        I enjoy working where business needs, data, technology, and people come together — helping teams clarify problems, improve processes, and make better decisions.
       </p>
-      <p class="about-body">
-        I'm most effective in roles that blend analytical thinking with strong communication — where I can clarify problems, improve processes, and help teams make better decisions through data and technology.
+      <p class="about-body reveal reveal-delay-2">
+        I believe that the best products and dashboards don't just give you more data. They give you a clearer vision.
       </p>
-      <div class="tools-grid">
-        <span class="tool-tag">SQL</span>
-        <span class="tool-tag">Power BI</span>
-        <span class="tool-tag">Tableau</span>
-        <span class="tool-tag">Jira</span>
-        <span class="tool-tag">Confluence</span>
-        <span class="tool-tag">Azure DevOps</span>
-        <span class="tool-tag">Dynamics 365</span>
-        <span class="tool-tag">Incorta</span>
-        <span class="tool-tag">Orbit Analytics</span>
-        <span class="tool-tag">REST APIs</span>
-        <span class="tool-tag">Excel</span>
-        <span class="tool-tag">Miro · Visio</span>
-      </div>
+      <p class="about-body reveal reveal-delay-3" style="color: var(--ink-3); font-size:0.88rem;">
+        Outside of work, you'll usually find me training for my next marathon, enjoying a latte, or baking something sweet.
+      </p>
     </div>
-    <div class="about-aside">
-      <blockquote class="pullquote">
-        "It was wonderful working with Estelle throughout the Jira migration project. Her contributions made a real difference."
-      </blockquote>
-      <p class="pullquote-attr">Mentor Bytyqi · Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+    <div class="about-right reveal">
+      <div class="how-i-work">
+        <p class="how-i-work-title">How I work</p>
+        <div class="work-pillars">
+          <div class="work-pillar">
+            <div class="pillar-title">Structured Problem Solving</div>
+            <div class="pillar-body">I break down complexity, identify root causes, and build practical, scalable solutions</div>
+          </div>
+          <div class="work-pillar">
+            <div class="pillar-title">Human-Centered Adoption</div>
+            <div class="pillar-body">I design with users in mind and support change through training, documentation and ongoing partnership</div>
+          </div>
+          <div class="work-pillar">
+            <div class="pillar-title">Turning Complexity into Clarity</div>
+            <div class="pillar-body">I simplify the complex — creating clarity through systems, data, and compelling visuals</div>
+          </div>
+        </div>
+      </div>
+      <div class="best-skills" style="margin-top:2.5rem;">
+        <p class="best-skills-title">What I do best</p>
+        <div class="skill-chips">
+          <span class="skill-chip">Systems Thinking</span>
+          <span class="skill-chip">Business Analysis</span>
+          <span class="skill-chip">Training &amp; Enablement</span>
+          <span class="skill-chip">Dashboard Design</span>
+          <span class="skill-chip">SQL &amp; Reporting</span>
+          <span class="skill-chip">Change Management</span>
+          <span class="skill-chip">Process Mapping</span>
+          <span class="skill-chip">Requirements Gathering</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -765,195 +797,320 @@
 <section class="work" id="work">
   <div class="work-header">
     <div>
-      <p class="section-label">Selected Work</p>
-      <h2 class="work-title">Projects &amp; Impact</h2>
+      <p class="section-eyebrow">Featured Work</p>
+      <h2 class="work-title reveal">Projects that made a<br><em>real difference.</em></h2>
     </div>
+    <p class="work-desc reveal reveal-delay-1">Analytics, financial systems, workflow support, and business process improvement. Click any project to expand.</p>
   </div>
 
-  <div class="projects-list">
-
-    <!-- Project 1 -->
-    <div class="project-card">
-      <div class="project-meta">
-        <span class="project-number">01</span>
-        <span class="project-company">Burns &amp; McDonnell</span>
-        <span class="project-industry">Financial Technology · Enterprise IT</span>
+  <!-- Burns & McDonnell -->
+  <div class="project-row" id="row-burns">
+    <div class="project-summary" onclick="toggleProject('row-burns')">
+      <div class="project-co">
+        <img class="project-logo"
+          src="https://logo.clearbit.com/burnsmcd.com"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+          alt="Burns & McDonnell logo">
+        <span class="project-logo-fallback" style="display:none;">Burns &amp; McDonnell</span>
+        <span class="project-industry">Financial Tech · Enterprise IT</span>
       </div>
-      <div class="project-main">
+      <div class="project-info">
         <h3 class="project-title">Jira &amp; Confluence Department Transformation</h3>
-        <p class="project-desc">
-          Led a department-wide migration from Azure DevOps and OneNote into Jira and Confluence for four cross-functional teams. Owned Jira setup, board creation, automation configuration, Confluence migration, and large-scale training that supported go-live readiness across the organization.
-        </p>
         <div class="project-tags">
           <span class="project-tag">Jira Admin</span>
           <span class="project-tag">Confluence</span>
+          <span class="project-tag">Change Mgmt</span>
           <span class="project-tag">Azure DevOps</span>
-          <span class="project-tag">Change Management</span>
           <span class="project-tag">Power Apps</span>
         </div>
       </div>
-      <div class="project-metrics">
-        <div class="metric-highlight">
-          <div class="metric-big">2,000+</div>
-          <div class="metric-desc">Employees trained</div>
+      <div class="project-expand-icon">+</div>
+    </div>
+    <div class="project-detail">
+      <div class="project-detail-inner">
+        <div class="detail-overview">
+          <h4>Overview</h4>
+          <p>Served as the designated Jira administrator for four cross-functional teams during a department-wide transition from Azure DevOps and OneNote into Jira and Confluence. Led Jira setup, board creation, automation configuration, Confluence migration, Power App-to-Jira intake migration, and large-scale training efforts that supported adoption and go-live readiness for more than 2,000 employees.</p>
+          <h4 style="margin-top:2rem;">Key Contributions</h4>
+          <ul class="contributions-list">
+            <li>Led Jira setup, board creation, and automation configuration as the designated admin for four teams</li>
+            <li>Launched production-ready Jira spaces and boards within two weeks of starting</li>
+            <li>Managed Confluence migration from fragmented OneNote documentation into a structured knowledge base</li>
+            <li>Created a page-by-page migration inventory, assigned content owners, and coordinated documentation transition</li>
+            <li>Project managed migration of Power App intake forms into Jira for the Financial Automations team</li>
+            <li>Partnered with IT and FinTech leadership on change management strategy to support adoption of new workflows</li>
+            <li>Designed and led Jira and Confluence training programs and workshops for 2,000+ employees in virtual and in-person settings</li>
+          </ul>
+          <h4 style="margin-top:1.5rem;">Constraints Navigated</h4>
+          <div class="constraints-row">
+            <span class="constraint-badge">Change mgmt for 2,000+ employees</span>
+            <span class="constraint-badge">2-week go-live timeline</span>
+            <span class="constraint-badge">Cross-collaboration with 3 teams</span>
+            <span class="constraint-badge">Varied Jira/Confluence familiarity</span>
+          </div>
         </div>
-        <div class="metric-highlight">
-          <div class="metric-big">2 wks</div>
-          <div class="metric-desc">To production-ready boards</div>
+        <div class="detail-impact">
+          <h4>Impact</h4>
+          <div class="impact-metrics">
+            <div class="impact-metric"><div class="impact-metric-num">2,000+</div><div class="impact-metric-label">Employees trained</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">2 wks</div><div class="impact-metric-label">Go-live timeline</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">4</div><div class="impact-metric-label">Teams supported</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">3+</div><div class="impact-metric-label">Systems migrated</div></div>
+          </div>
+          <div class="project-testimonial">
+            <h4>What they said</h4>
+            <blockquote>"Special thanks to Estelle for keeping communication flowing across departments such as HR, Finance, and Procurement, ensuring alignment across the organization. She also prepared training materials and enablement resources that helped teams adopt the new platform and processes more effectively."</blockquote>
+            <div class="testimonial-attr">
+              <span class="testimonial-name">Mentor Bytyqi</span>
+              Department IT Manager, Enterprise Applications · Burns &amp; McDonnell<br>
+              <em style="font-size:0.68rem; font-style:normal; opacity:0.7;">Used with permission</em>
+            </div>
+          </div>
+          <div class="project-testimonial" style="margin-top:2rem;">
+            <blockquote>"It was wonderful working with Estelle throughout the Jira migration project. Her contributions made a real difference, and I appreciate all of her hard work and positivity."</blockquote>
+            <div class="testimonial-attr">
+              <span class="testimonial-name">Mentor Bytyqi</span>
+              Department IT Manager, Enterprise Applications · Burns &amp; McDonnell<br>
+              <em style="font-size:0.68rem; font-style:normal; opacity:0.7;">Used with permission</em>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Project 2 -->
-    <div class="project-card">
-      <div class="project-meta">
-        <span class="project-number">02</span>
-        <span class="project-company">WellSky</span>
+  <!-- WellSky -->
+  <div class="project-row" id="row-wellsky">
+    <div class="project-summary" onclick="toggleProject('row-wellsky')">
+      <div class="project-co">
+        <img class="project-logo"
+          src="https://logo.clearbit.com/wellsky.com"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+          alt="WellSky logo">
+        <span class="project-logo-fallback" style="display:none;">WellSky</span>
         <span class="project-industry">Post-Acute Healthcare</span>
       </div>
-      <div class="project-main">
-        <h3 class="project-title">Product Analytics for a Healthcare Reporting Platform</h3>
-        <p class="project-desc">
-          Owned end-to-end product analytics for a customer-facing reporting platform serving 200+ healthcare clients. Delivered KPI dashboards, reusable SQL frameworks, user guides, and training sessions that improved reporting adoption and reduced analyst dependency.
-        </p>
+      <div class="project-info">
+        <h3 class="project-title">Product Analyst — Post-Acute Healthcare Reporting Platform</h3>
         <div class="project-tags">
           <span class="project-tag">SQL</span>
           <span class="project-tag">Dashboarding</span>
-          <span class="project-tag">User Guides</span>
           <span class="project-tag">Healthcare</span>
           <span class="project-tag">Jira</span>
+          <span class="project-tag">User Guides</span>
         </div>
       </div>
-      <div class="project-metrics">
-        <div class="metric-highlight">
-          <div class="metric-big">50+</div>
-          <div class="metric-desc">KPI dashboards delivered</div>
+      <div class="project-expand-icon">+</div>
+    </div>
+    <div class="project-detail">
+      <div class="project-detail-inner">
+        <div class="detail-overview">
+          <h4>Overview</h4>
+          <p>At WellSky, I supported product analytics and reporting for a customer-facing platform used by post-acute healthcare clients. My work focused on helping teams and users better understand product performance, adoption, and reporting needs through KPI dashboards, custom reports, SQL-based logic, and user-focused enablement.</p>
+          <h4 style="margin-top:2rem;">Key Contributions</h4>
+          <ul class="contributions-list">
+            <li>Owned end-to-end product analytics for a reporting platform serving 200+ healthcare clients</li>
+            <li>Delivered 50+ KPI-driven dashboards and interactive reports designed to support real-time monitoring and decision-making</li>
+            <li>Worked with product managers and healthcare clients to define success metrics, gather requirements, and evaluate feature impact</li>
+            <li>Built reusable SQL-based reporting frameworks that supported self-service analytics for 200+ users</li>
+            <li>Wrote 10+ user guides and led training sessions to improve reporting adoption and customer confidence</li>
+            <li>Automated billing and patient face sheet reports to improve compliance and reduce manual reporting work</li>
+          </ul>
         </div>
-        <div class="metric-highlight">
-          <div class="metric-big">200+</div>
-          <div class="metric-desc">Healthcare clients served</div>
+        <div class="detail-impact">
+          <h4>Impact</h4>
+          <div class="impact-metrics">
+            <div class="impact-metric"><div class="impact-metric-num">50+</div><div class="impact-metric-label">KPI dashboards</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">200+</div><div class="impact-metric-label">Healthcare clients</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">10+</div><div class="impact-metric-label">User guides written</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">↓</div><div class="impact-metric-label">Manual effort reduced</div></div>
+          </div>
+          <p style="font-size:0.85rem; font-weight:300; color:var(--ink-2); line-height:1.8;">
+            Helped turn reporting into a more scalable, user-friendly part of the product experience. Improved visibility into customer usage patterns, feature adoption, and product performance. Enabled more self-service reporting, reducing reliance on analysts for routine reporting needs.
+          </p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Project 3 -->
-    <div class="project-card">
-      <div class="project-meta">
-        <span class="project-number">03</span>
-        <span class="project-company">Supply Chain Client</span>
-        <span class="project-industry">Supply Chain · ERP</span>
+  <!-- Supply Chain -->
+  <div class="project-row" id="row-supply">
+    <div class="project-summary" onclick="toggleProject('row-supply')">
+      <div class="project-co">
+        <span class="project-logo-fallback">Supply Chain Client</span>
+        <span class="project-industry">ERP &amp; Reporting Automation</span>
       </div>
-      <div class="project-main">
-        <h3 class="project-title">Sales Open Orders Dashboard &amp; SQL Reporting Automation</h3>
-        <p class="project-desc">
-          Built real-time Sales Open Orders dashboards that consolidated ERP and CRM data — giving supply chain and sales leadership instant visibility into order status, aging, and revenue forecasting, and eliminating a long-standing manual daily reporting workflow.
-        </p>
+      <div class="project-info">
+        <h3 class="project-title">Sales Open Orders Dashboard &amp; SQL Automation</h3>
         <div class="project-tags">
           <span class="project-tag">SQL</span>
           <span class="project-tag">Incorta</span>
           <span class="project-tag">Oracle ERP</span>
           <span class="project-tag">NetSuite</span>
-          <span class="project-tag">Automation</span>
         </div>
       </div>
-      <div class="project-metrics">
-        <div class="metric-highlight">
-          <div class="metric-big">80%</div>
-          <div class="metric-desc">Reduction in manual labor</div>
+      <div class="project-expand-icon">+</div>
+    </div>
+    <div class="project-detail">
+      <div class="project-detail-inner">
+        <div class="detail-overview">
+          <h4>Overview</h4>
+          <p>Built real-time Sales Open Orders dashboards that consolidated ERP and CRM data to give supply chain and sales leadership instant visibility into order status, aging, and revenue forecasting — eliminating manual daily reporting.</p>
+          <h4 style="margin-top:2rem;">Solution &amp; Technical Approach</h4>
+          <ul class="contributions-list">
+            <li>Integrated and standardized Oracle ERP and NetSuite data in SQL</li>
+            <li>Built an automated daily-refreshing data model for open orders</li>
+            <li>Designed KPI-driven dashboard views with executive-first visual hierarchy</li>
+            <li>Added rolling 7-day and month-over-month metrics for short-term planning</li>
+          </ul>
+          <h4 style="margin-top:1.5rem;">Key Decisions</h4>
+          <p style="font-size:0.85rem; color:var(--ink-2); font-weight:300; line-height:1.8;">Full automation over incremental optimization — stakeholders needed complete elimination of manual work, not just reduction. Familiar dashboard design patterns to lower change resistance and build trust to accelerate adoption.</p>
+          <h4 style="margin-top:1.5rem;">Constraints Navigated</h4>
+          <div class="constraints-row">
+            <span class="constraint-badge">Multiple ERP schemas</span>
+            <span class="constraint-badge">Strict security requirements</span>
+            <span class="constraint-badge">Near real-time updates</span>
+            <span class="constraint-badge">Legacy system integration</span>
+          </div>
         </div>
-        <div class="metric-highlight">
-          <div class="metric-big">4 hrs</div>
-          <div class="metric-desc">Daily time saved</div>
+        <div class="detail-impact">
+          <h4>Impact</h4>
+          <div class="impact-metrics">
+            <div class="impact-metric"><div class="impact-metric-num">80%</div><div class="impact-metric-label">Reduction in manual labor</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">4 hrs</div><div class="impact-metric-label">Daily time saved</div></div>
+          </div>
+          <p style="font-size:0.85rem; font-weight:300; color:var(--ink-2); line-height:1.8;">
+            Eliminated a long-standing manual Excel reporting workflow. Enabled real-time executive visibility into open orders and backlog risk. Reduced reporting effort by ~80%, improving decision velocity across sales and supply chain leadership.
+          </p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Project 4 -->
-    <div class="project-card">
-      <div class="project-meta">
-        <span class="project-number">04</span>
-        <span class="project-company">Local Bookstore</span>
+  <!-- Bookstore -->
+  <div class="project-row" id="row-book">
+    <div class="project-summary" onclick="toggleProject('row-book')">
+      <div class="project-co">
+        <span class="project-logo-fallback">Local Bookstore</span>
         <span class="project-industry">Retail Strategy · KC Area</span>
       </div>
-      <div class="project-main">
-        <h3 class="project-title">Data-Driven Operations Consulting</h3>
-        <p class="project-desc">
-          Improved operations for a local book, plant, and coffee shop through inventory tracking, customer segmentation, and store-hour optimization. Applied behavioral segmentation beyond basic demographics to identify high-value customer mindsets and inform merchandising decisions.
-        </p>
+      <div class="project-info">
+        <h3 class="project-title">Data-Driven Operations &amp; Customer Segmentation</h3>
         <div class="project-tags">
           <span class="project-tag">Excel</span>
           <span class="project-tag">SQL</span>
-          <span class="project-tag">Customer Segmentation</span>
+          <span class="project-tag">Segmentation</span>
           <span class="project-tag">Retail Strategy</span>
         </div>
       </div>
-      <div class="project-metrics">
-        <div class="metric-highlight">
-          <div class="metric-big">20%</div>
-          <div class="metric-desc">Increase in foot traffic</div>
+      <div class="project-expand-icon">+</div>
+    </div>
+    <div class="project-detail">
+      <div class="project-detail-inner">
+        <div class="detail-overview">
+          <h4>Overview</h4>
+          <p>Improved operations for a local book, plant, and coffee shop through data-driven analysis, including inventory tracking, customer segmentation, and store-hour optimization based on traffic and sales patterns. Incorporated social media–driven demand trends (e.g., BookTok) into competitive analysis to inform customer engagement and merchandising recommendations.</p>
+          <h4 style="margin-top:2rem;">Solution &amp; Technical Approach</h4>
+          <ul class="contributions-list">
+            <li>Built an Excel + SQL framework to track inventory turnover and revenue by product line</li>
+            <li>Analyzed purchasing behavior to identify high-impact sales periods and categories</li>
+            <li>Applied behavioral segmentation (demographics, technographics, and needs-based psychographics) to identify target customer mindsets beyond basic purchase patterns — revealing opportunities in the remote worker and creative community segments</li>
+            <li>Evaluated competitor positioning and social-media-driven demand trends (e.g., BookTok)</li>
+            <li>Delivered actionable recommendations for store hours, promotions, and community engagement</li>
+          </ul>
+          <h4 style="margin-top:1.5rem;">Key Decisions</h4>
+          <p style="font-size:0.85rem; color:var(--ink-2); font-weight:300; line-height:1.8;">Simplicity over complexity. Prioritized low-cost, maintainable tooling to ensure adoption by a small business team. Focused on actionable insights over complex analysis.</p>
+          <h4 style="margin-top:1.5rem;">Constraints Navigated</h4>
+          <div class="constraints-row">
+            <span class="constraint-badge">Limited budget</span>
+            <span class="constraint-badge">Minimal historical data</span>
+            <span class="constraint-badge">No inventory software</span>
+            <span class="constraint-badge">Confidentiality requirements</span>
+          </div>
         </div>
-        <div class="metric-highlight">
-          <div class="metric-big">3</div>
-          <div class="metric-desc">Revenue streams optimized</div>
+        <div class="detail-impact">
+          <h4>Impact</h4>
+          <div class="impact-metrics">
+            <div class="impact-metric"><div class="impact-metric-num">20%</div><div class="impact-metric-label">Increase in foot traffic</div></div>
+            <div class="impact-metric"><div class="impact-metric-num">3</div><div class="impact-metric-label">Revenue streams optimized</div></div>
+          </div>
+          <p style="font-size:0.85rem; font-weight:300; color:var(--ink-2); line-height:1.8;">
+            Replaced ad-hoc inventory and sales tracking with a structured framework. Improved visibility across books, coffee, and plant revenue streams. Enabled data-driven decisions for store hours, customer targeting, and marketing.
+          </p>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonial-section">
-  <p class="section-label">Recognition</p>
-  <div class="testimonial-grid">
-    <div class="testimonial-card">
-      <span class="testimonial-mark">"</span>
-      <p class="testimonial-quote">
-        It was wonderful working with Estelle throughout the Jira migration project. Her contributions made a real difference, and I appreciate all of her hard work and positivity.
-      </p>
-      <p class="testimonial-name">Mentor Bytyqi</p>
-      <p class="testimonial-attr">Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+<section class="testimonials" id="testimonials">
+  <p class="section-eyebrow">Recognition</p>
+  <div class="testimonial-carousel">
+    <div class="testimonial-slides" id="tSlides">
+      <div class="testimonial-slide">
+        <p class="t-quote">Special thanks to Estelle for keeping communication flowing across departments such as HR, Finance, and Procurement, ensuring alignment across the organization. She also prepared training materials and enablement resources that helped teams adopt the new platform and processes more effectively.</p>
+        <div>
+          <p class="t-name t-attr">Mentor Bytyqi</p>
+          <p class="t-attr">Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+        </div>
+      </div>
+      <div class="testimonial-slide">
+        <p class="t-quote">It was wonderful working with Estelle throughout the Jira migration project. Her contributions made a real difference, and I appreciate all of her hard work and positivity.</p>
+        <div>
+          <p class="t-name t-attr">Mentor Bytyqi</p>
+          <p class="t-attr">Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+        </div>
+      </div>
     </div>
-    <div class="testimonial-card">
-      <span class="testimonial-mark">"</span>
-      <p class="testimonial-quote">
-        Special thanks to Estelle for keeping communication flowing across departments such as HR, Finance, and Procurement, ensuring alignment across the organization. She also prepared training materials and enablement resources that helped teams adopt the new platform and processes more effectively.
-      </p>
-      <p class="testimonial-name">Mentor Bytyqi</p>
-      <p class="testimonial-attr">Department IT Manager, Enterprise Applications · Burns &amp; McDonnell</p>
+    <div class="testimonial-nav" style="margin-top:2.5rem;">
+      <button class="t-dot active" onclick="goSlide(0)"></button>
+      <button class="t-dot" onclick="goSlide(1)"></button>
     </div>
   </div>
 </section>
 
 <!-- PHILOSOPHY -->
 <section class="philosophy" id="philosophy">
-  <p class="section-label">Approach</p>
-  <div class="philosophy-grid">
-    <div class="philosophy-left">
-      <h2 class="philosophy-headline">Dashboards that help people <em>decide</em>, not just inform.</h2>
-      <p class="philosophy-body">
-        I design for the people who will actually use the data — busy professionals juggling competing priorities, often making important decisions under pressure. Good analytics begins not with the data, but with understanding the audience.
-      </p>
-      <p class="philosophy-body">
-        The best dashboards don't give you more information. They give you the right information, at the right time, shaped into a story that's useful in the moment it's needed.
-      </p>
-    </div>
+  <div>
+    <p class="section-eyebrow">Dashboard Philosophy</p>
+    <h2 class="philosophy-statement reveal">
+      Dashboards that help people <em>decide,</em> not just inform.
+    </h2>
+    <p class="philosophy-body reveal reveal-delay-1">
+      I design for the people who will actually use the data — busy professionals making important decisions under pressure. Good analytics begins not with the data, but with understanding the audience.<br><br>
+      The best dashboards don't give you more information. They give you the right information, shaped into a story that's useful in the moment it's needed.
+    </p>
+  </div>
+  <div>
     <div class="philosophy-pillars">
-      <div class="pillar">
-        <p class="pillar-title">Outcome-first metrics</p>
-        <p class="pillar-body">Surface what matters most, not what's easiest to measure.</p>
+      <div class="philo-pill reveal">
+        <span class="philo-num">01</span>
+        <div class="philo-content">
+          <p class="philo-title">Outcome-First Metrics</p>
+          <p class="philo-body">Surface what matters most, not what's easiest to measure. Focus on business outcomes that drive impact.</p>
+        </div>
       </div>
-      <div class="pillar">
-        <p class="pillar-title">Clear visual hierarchy</p>
-        <p class="pillar-body">Information that's easier to take in reduces cognitive load at decision time.</p>
+      <div class="philo-pill reveal reveal-delay-1">
+        <span class="philo-num">02</span>
+        <div class="philo-content">
+          <p class="philo-title">Clear Visual Hierarchy</p>
+          <p class="philo-body">Information that's easier to take in reduces cognitive load at decision time. Clean, focused design that prioritizes signal over noise.</p>
+        </div>
       </div>
-      <div class="pillar">
-        <p class="pillar-title">Signal over noise</p>
-        <p class="pillar-body">Clean, focused design that earns attention rather than demanding it.</p>
+      <div class="philo-pill reveal reveal-delay-2">
+        <span class="philo-num">03</span>
+        <div class="philo-content">
+          <p class="philo-title">Signal Over Noise</p>
+          <p class="philo-body">Highlight what matters most and remove what doesn't. Clean, focused design that earns attention rather than demanding it.</p>
+        </div>
       </div>
-      <div class="pillar">
-        <p class="pillar-title">Audience-specific views</p>
-        <p class="pillar-body">Executive, operational, and user-level needs are genuinely different.</p>
+      <div class="philo-pill reveal reveal-delay-3">
+        <span class="philo-num">04</span>
+        <div class="philo-content">
+          <p class="philo-title">Audience-Specific Decisions</p>
+          <p class="philo-body">Design for the user, their context, and their business. Executive, operational, and user-level needs are genuinely different.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -961,14 +1118,15 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <p class="contact-eyebrow">Get in touch</p>
-  <h2 class="contact-headline">Let's build something<br><em>worth seeing.</em></h2>
-  <p class="contact-subtitle">
+  <p class="contact-big reveal">
+    Let's build<br><em>something</em><br>together.
+  </p>
+  <p class="contact-sub reveal reveal-delay-1">
     Open to contract, full-time, and consulting opportunities in analytics, business systems, and data-driven strategy.
   </p>
-  <div class="contact-links">
-    <a href="https://www.linkedin.com/in/estelle-lu/" target="_blank" class="btn-primary">Connect on LinkedIn ↗</a>
-    <a href="mailto:estelle.elizabeth.lu@gmail.com" class="btn-ghost">Send an Email</a>
+  <div class="contact-row reveal reveal-delay-2">
+    <a href="https://www.linkedin.com/in/estelle-lu/" target="_blank" class="btn btn-dark">Connect on LinkedIn ↗</a>
+    <a href="mailto:estelle.elizabeth.lu@gmail.com" class="btn btn-outline">Say Hello</a>
   </div>
 </section>
 
@@ -979,6 +1137,47 @@
   <span>© 2026</span>
 </footer>
 
+<script>
+// Nav on scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Trigger hero reveals immediately
+setTimeout(() => {
+  document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+}, 100);
+
+// Project accordion
+function toggleProject(id) {
+  const row = document.getElementById(id);
+  const isOpen = row.classList.contains('open');
+  document.querySelectorAll('.project-row.open').forEach(r => r.classList.remove('open'));
+  if (!isOpen) {
+    row.classList.add('open');
+    setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  }
+}
+
+// Testimonial slider
+let currentSlide = 0;
+function goSlide(i) {
+  currentSlide = i;
+  document.getElementById('tSlides').style.transform = `translateX(-${i * 100}%)`;
+  document.querySelectorAll('.t-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+}
+// Auto-advance
+setInterval(() => goSlide((currentSlide + 1) % 2), 6000);
+</script>
 </body>
 </html>
+
 <!-- trigger GitHub Pages rebuild -->
