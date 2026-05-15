@@ -1,0 +1,106 @@
+---
+import { philosophy } from '../../data/site';
+---
+
+<section id="philosophy" class="philo-section">
+  <div class="philo-left reveal">
+    <p class="eyebrow">{philosophy.eyebrow}</p>
+    <h2 class="philo-statement heading-accent">
+      {philosophy.statement.before}<em>{philosophy.statement.em}</em>{philosophy.statement.after}
+    </h2>
+    {philosophy.body.map((para) => (
+      <p class="philo-body">{para}</p>
+    ))}
+  </div>
+
+  <div class="philo-right reveal delay-1">
+    <div class="philo-pillars">
+      {philosophy.pillars.map((pillar) => (
+        <div class="philo-pillar philo-hover">
+          <span class="pillar-num">{pillar.num}</span>
+          <div>
+            <p class="pillar-name">{pillar.title}</p>
+            <p class="pillar-desc">{pillar.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .philo-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    padding: 7rem 3.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .philo-statement {
+    font-family: var(--font-display);
+    font-size: var(--text-h2-philo);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-ink);
+    margin-bottom: 2rem;
+  }
+
+  .philo-body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--color-ink-2);
+    margin-bottom: 1.25rem;
+  }
+
+  .philo-pillars {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .philo-pillar {
+    display: flex;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: padding-left 0.2s var(--ease), background 0.2s var(--ease);
+  }
+  .philo-hover:hover {
+    padding-left: 0.5rem;
+    background: var(--color-sand);
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .pillar-num {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--color-amber);
+    min-width: 20px;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+
+  .pillar-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.83rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-ink-3);
+  }
+
+  @media (max-width: 900px) {
+    .philo-section {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      padding: 5rem 1.5rem;
+    }
+  }
+</style>

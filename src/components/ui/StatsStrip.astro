@@ -1,0 +1,113 @@
+---
+import { stats } from '../../data/site';
+---
+
+<div class="stats-strip">
+  {stats.map((stat, i) => (
+    <div class={`stat-block reveal delay-${i + 1}`}>
+      <span
+        class="stat-num"
+        data-count-to={stat.countTo !== undefined ? String(stat.countTo) : undefined}
+        data-suffix={stat.suffix ?? ''}
+        data-use-comma={stat.useComma ? 'true' : 'false'}
+      >
+        {stat.num}
+      </span>
+      <span class="stat-label">{stat.label}</span>
+    </div>
+  ))}
+</div>
+
+<script>
+  const DURATION = 1500;
+
+  function animateCount(el: HTMLElement) {
+    const to = parseInt(el.dataset.countTo!, 10);
+    const suffix = el.dataset.suffix ?? '';
+    const useComma = el.dataset.useComma === 'true';
+    const start = performance.now();
+
+    el.textContent = (useComma ? '0' : '0') + suffix;
+
+    function tick(now: number) {
+      const progress = Math.min((now - start) / DURATION, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(eased * to);
+      el.textContent = (useComma ? value.toLocaleString('en-US') : String(value)) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  function init() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll<HTMLElement>('[data-count-to]').forEach((el) => {
+      observer.observe(el);
+    });
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stat-block {
+    padding: 3rem 3.5rem;
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .stat-block:last-child {
+    border-right: none;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: var(--text-stat-num);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-ink);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-3);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .stats-strip {
+      grid-template-columns: 1fr 1fr;
+    }
+    .stat-block {
+      padding: 2rem 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .stat-block:nth-child(2) {
+      border-right: none;
+    }
+    .stat-block:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+  }
+</style>

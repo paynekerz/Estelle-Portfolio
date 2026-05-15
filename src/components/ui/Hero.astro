@@ -1,0 +1,204 @@
+---
+import { hero } from '../../data/site';
+---
+
+<header class="hero-section">
+  <span aria-hidden="true" class="hero-bg-label hero-bg-text">Estelle</span>
+
+  <div class="hero-content">
+    <div class="hero-reveal reveal delay-1">
+      <p class="eyebrow hero-eyebrow">{hero.tag}</p>
+    </div>
+
+    <h1 class="hero-name heading-accent hero-reveal reveal delay-2">
+      {hero.name.line1}<br /><em>{hero.name.line2}</em>
+    </h1>
+
+    <div class="hero-bottom hero-reveal reveal delay-3">
+      <p class="hero-desc">{hero.description}</p>
+
+      <div class="hero-actions">
+        <div class="hero-status">
+          <span class="status-dot hero-dot" aria-hidden="true"></span>
+          <span class="hero-status-text">{hero.status}</span>
+        </div>
+        <div class="hero-buttons">
+          {hero.buttons.map((btn) => (
+            <a
+              href={btn.href}
+              class={`btn btn-${btn.variant}`}
+              {...(btn.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {btn.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint scroll-hint-bounce" aria-hidden="true">
+    <svg viewBox="0 0 18 28" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="22">
+      <rect x="1" y="1" width="16" height="26" rx="8" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="9" y1="6" x2="9" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span class="hero-scroll-text">{hero.scrollHint}</span>
+  </div>
+</header>
+
+<style>
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 7rem 3.5rem 4rem;
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .hero-bg-label {
+    position: absolute;
+    top: 8%;
+    right: -2%;
+    font-family: var(--font-display);
+    font-size: var(--text-hero-bg);
+    line-height: 1;
+    z-index: 0;
+    display: block;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 2rem;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: var(--text-hero);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin: 0 0 3rem;
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 3rem;
+  }
+
+  .hero-desc {
+    max-width: 420px;
+    font-size: 0.97rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-ink-2);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .hero-status {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #6aaa64;
+    flex-shrink: 0;
+  }
+
+  .hero-status-text {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--color-ink-3);
+    white-space: nowrap;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-ink-3);
+    transition: opacity 0.4s var(--ease-out);
+  }
+  .hero-scroll-hint.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .hero-scroll-text {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .hero-section {
+      padding: 5rem 1.5rem 4rem;
+    }
+    .hero-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .hero-actions {
+      align-items: flex-start;
+    }
+    .hero-scroll-hint {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initScrollHint() {
+    const hint = document.querySelector<HTMLElement>('.hero-scroll-hint');
+    if (!hint) return;
+
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      hint.style.display = 'none';
+      return;
+    }
+
+    const threshold = window.innerHeight / 2;
+
+    function update() {
+      hint.classList.toggle('hidden', window.scrollY > threshold);
+    }
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  initScrollHint();
+  document.addEventListener('astro:page-load', initScrollHint);
+</script>

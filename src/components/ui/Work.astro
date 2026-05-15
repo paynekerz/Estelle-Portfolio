@@ -1,0 +1,66 @@
+---
+import WorkAccordion from '../islands/WorkAccordion';
+import { work } from '../../data/site';
+---
+
+<section id="work" class="work-section">
+  <div class="work-header reveal">
+    <div>
+      <p class="eyebrow">{work.eyebrow}</p>
+      <h2 class="work-heading heading-accent">
+        {work.heading.before} <em>{work.heading.em}</em>
+      </h2>
+    </div>
+    <p class="work-desc">{work.description}</p>
+  </div>
+
+  <WorkAccordion projects={work.projects} client:visible />
+</section>
+
+<style>
+  .work-section {
+    padding: 7rem 3.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .work-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-h2-work);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+    margin-top: 0;
+  }
+
+  .work-desc {
+    max-width: 340px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-ink-3);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  @media (max-width: 900px) {
+    .work-section {
+      padding: 5rem 1.5rem;
+    }
+    .work-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .work-desc {
+      text-align: left;
+    }
+  }
+</style>

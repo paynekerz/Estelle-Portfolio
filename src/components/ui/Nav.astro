@@ -1,0 +1,124 @@
+---
+import { nav } from '../../data/site';
+---
+
+<nav id="nav" class="nav-root">
+  <a href="/" class="nav-logo">{nav.logo}</a>
+  <div class="nav-links">
+    {nav.links.map((link) =>
+      link.cta ? (
+        <a href={link.href} class="nav-cta">{link.label}</a>
+      ) : (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      )
+    )}
+  </div>
+</nav>
+
+<style>
+  .nav-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3.5rem;
+    transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease),
+                padding-top 0.3s var(--ease), padding-bottom 0.3s var(--ease);
+  }
+  .nav-root.scrolled {
+    background-color: var(--color-bg-frosted);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .nav-link {
+    position: relative;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s var(--ease-out);
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-cta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--color-ink);
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: background-color 0.25s, color 0.25s;
+  }
+  .nav-cta:hover {
+    background-color: var(--color-ink);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 900px) {
+    .nav-root {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .nav-cta {
+      display: none;
+    }
+    .nav-links {
+      gap: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  const navEl = document.getElementById('nav');
+
+  window.addEventListener(
+    'scroll',
+    () => { navEl?.classList.toggle('scrolled', window.scrollY > 60); },
+    { passive: true }
+  );
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Colors ── */
+  --color-bg:           #F8F4EE;
+  --color-bg-frosted:   rgba(248, 244, 238, 0.97);
+  --color-ink:          #1C120A;
+  --color-ink-2:        #4A3828;
+  --color-ink-3:        #8C7060;
+  --color-amber:        #B87333;
+  --color-amber-light:  #D4955A;
+  --color-amber-pale:   #EDD9BC;
+  --color-sand:         #EDE4D6;
+  --color-white:        #FDFAF6;
+  --color-border:       rgba(28, 18, 10, 0.10);
+  --color-border-2:     rgba(28, 18, 10, 0.06);
+
+  /* ── Fonts ── */
+  --font-display: 'Playfair Display Variable', Georgia, serif;
+  --font-body:    'DM Sans Variable', sans-serif;
+
+  /* ── Fluid type sizes ── */
+  --text-hero:        clamp(4.5rem, 10vw, 9rem);
+  --text-contact-big: clamp(3rem, 7vw, 7rem);
+  --text-h2-about:    clamp(2.2rem, 4vw, 3.5rem);
+  --text-h2-work:     clamp(2rem, 4vw, 3rem);
+  --text-h2-philo:    clamp(1.8rem, 3.2vw, 2.8rem);
+  --text-t-quote:     clamp(1.4rem, 3vw, 2.4rem);
+  --text-stat-num:    clamp(2.5rem, 4vw, 3.8rem);
+  --text-hero-bg:     clamp(10rem, 20vw, 18rem);
+}
+
+/* Easing vars live in :root — NOT @theme.
+   @theme would shadow Tailwind v4's built-in --ease-out token. */
+:root {
+  --ease:     cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+/* ── Base ── */
+html {
+  background-color: var(--color-bg);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar            { width: 4px; }
+::-webkit-scrollbar-track      { background: var(--color-bg); }
+::-webkit-scrollbar-thumb      { background: var(--color-amber-pale); border-radius: 2px; }
+
+/* ── Hero ghost text ── */
+.hero-bg-text {
+  -webkit-text-stroke: 1px rgba(28, 18, 10, 0.055);
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Button system ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 2.25rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+  white-space: nowrap;
+}
+.btn-dark {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+  border: 1px solid var(--color-ink);
+}
+.btn-dark:hover {
+  background-color: var(--color-amber);
+  border-color: var(--color-amber);
+  color: var(--color-white);
+}
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+}
+.btn-outline:hover {
+  background-color: var(--color-sand);
+  border-color: var(--color-ink);
+}
+
+/* ── Section eyebrow ── */
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-amber);
+  flex-shrink: 0;
+}
+.eyebrow-light {
+  color: var(--color-amber-light);
+}
+.eyebrow-light::before {
+  background: var(--color-amber-light);
+}
+
+/* ── Heading accent: em inside heading = italic + amber ── */
+.heading-accent em {
+  font-style: italic;
+  color: var(--color-amber);
+}
+
+/* ── Nav link underline slide-in ── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s var(--ease-out);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── Hover indent (pillars, project rows) ── */
+.hover-indent {
+  transition: background 0.2s var(--ease), padding-left 0.2s var(--ease),
+              padding-right 0.2s var(--ease), margin-left 0.2s var(--ease),
+              margin-right 0.2s var(--ease);
+}
+.hover-indent:hover {
+  background: var(--color-sand);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+/* ── Skill chips ── */
+.skill-chip {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-2);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+.skill-chip:hover {
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+  background-color: rgba(184, 115, 51, 0.06);
+}
+
+/* ── Project tag chips ── */
+.tag-chip {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  background: var(--color-amber-pale);
+  color: var(--color-amber);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.45s; }
+
+/* ── Keyframe animations ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%       { transform: scale(1.3); opacity: 0.6; }
+}
+.status-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes bounce-hint {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(5px); }
+}
+.scroll-hint-bounce {
+  animation: bounce-hint 2s ease-in-out infinite;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

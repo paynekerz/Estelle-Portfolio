@@ -1,0 +1,16 @@
+{
+  "name": "Estelle Lu | Business & Systems Analyst",
+  "short_name": "Estelle Lu",
+  "description": "Portfolio of Estelle Lu, MBA-trained Business & Systems Analyst in Kansas City.",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#F8F4EE",
+  "theme_color": "#F8F4EE",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

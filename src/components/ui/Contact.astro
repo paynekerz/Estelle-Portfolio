@@ -1,0 +1,71 @@
+---
+import { contact } from '../../data/site';
+---
+
+<section id="contact" class="contact-section">
+  <div class="contact-big heading-accent reveal">
+    {contact.lines.map((line) => (
+      <div class={`contact-line${line.em ? ' contact-em' : ''}`}>
+        {line.em ? <em>{line.text}</em> : line.text}
+      </div>
+    ))}
+  </div>
+
+  <p class="contact-sub reveal delay-1">{contact.sub}</p>
+
+  <div class="contact-cta reveal delay-2">
+    {contact.buttons.map((btn) => (
+      <a
+        href={btn.href}
+        class={`btn btn-${btn.variant}`}
+        {...(btn.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
+        {btn.label}
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 9rem 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-big {
+    font-family: var(--font-display);
+    font-size: var(--text-contact-big);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--color-ink);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-line {
+    display: block;
+  }
+
+  .contact-sub {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-ink-3);
+    max-width: 460px;
+    margin: 0 auto 3rem;
+  }
+
+  .contact-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .contact-section {
+      padding: 6rem 1.5rem;
+    }
+  }
+</style>
