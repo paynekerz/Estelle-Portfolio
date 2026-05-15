@@ -1,11 +1,11 @@
-{
+﻿{
   "headers": [
     {
       "source": "/fonts/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/(.*)\\.(?:jpg|jpeg|gif|png|svg|ico|webp|avif)",
+      "source": "/(.*)\\.(jpg|jpeg|gif|png|svg|ico|webp|avif)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
   ]
