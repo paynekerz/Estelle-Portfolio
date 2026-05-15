@@ -20,8 +20,9 @@ pnpm-debug.log*
 *.tsbuildinfo
 
 # Claude Code / Agent
-.claude/settings.local.json
+.claude/
 .planning/
+memory/
 CLAUDE.md
 DESIGN.md
 PLANNING.md
